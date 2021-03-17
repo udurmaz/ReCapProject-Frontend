@@ -1,24 +1,17 @@
-<div *ngIf="dataLoaded == false" class="spinner-border text-info" role="status">
-  <span class="visually-hidden">Loading...</span>
+<div class="row" >
+  <div *ngFor="let car of cars" class="card" style="width: 20rem;">
+    <img src="https://localhost:44313/uploads/{{car.imagePath}}" class="card-img-top" alt="...">
+    <div  class="card-body">
+      <h5 class="card-title">{{car.description}}</h5>
+    </div >
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Id {{car.carId}}</li>
+      <li class="list-group-item">Marka: {{car.brandName}}</li>
+      <li class="list-group-item">Renk: {{car.colorName}} </li>
+      <li class="list-group-item">Fiyat: {{car.dailyPrice}} TL</li>
+    </ul>
+    <div class="card-body">
+      <button routerLink="/cars/car-detail/{{car.carId}}" type="button" class="btn btn-light">Detaylar</button>
+    </div>
+  </div>
 </div>
-<table *ngIf = "dataLoaded==true" class="table">
-  <thead>
-      <tr>
-          <th>Car Id</th>
-          <th>Brand Name</th>
-          <th>Color Name</th>
-          <th>Model Year</th>
-          <th>Daily Price</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{car.carId}}</td>
-    <td>{{car.brandName}}</td>
-    <td>{{car.colorName}}</td>
-    <td>{{car.modelYear}}</td>
-    <td>{{car.dailyPrice}}</td>
-    <td>{{car.description}}</td>
-      
-  </tr>
-</table>
